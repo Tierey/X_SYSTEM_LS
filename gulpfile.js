@@ -20,7 +20,7 @@ const plumber     = require('gulp-plumber');      // добавляет преф
         .pipe( gulp.dest(`./public`))
         .pipe( browserSync.stream())
     });
-       
+    
     gulp.task('styl',()=> { 
         return gulp.src([`./main.styl`]) // берет основной фаил стилей
         .pipe( plumber())
@@ -50,7 +50,7 @@ const plumber     = require('gulp-plumber');      // добавляет преф
 
     gulp.task('watch',()=> {
         gulp.watch([`./index.html`], gulp.series('html'));
-        gulp.watch([`./main.styl`],  gulp.series('styl'));
+        gulp.watch([`./*.styl`],  gulp.series('styl'));
         gulp.watch([`./main.js`],    gulp.series('js'));
     });
 

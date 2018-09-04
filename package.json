@@ -1,20 +1,17 @@
 {
   "name": "x-system-xs",
   "version": "0.0.1",
-  "description": "Tier is comming",
+  "description": "for fast tests",
   "private": true,
   "main": "index.js",
   "author": "Tier-X",
   "license": "ISC",
   "scripts": {},
   "devDependencies": {
-    "browser-sync": "^2.23.6",
+    "browser-sync": "^2.24.7",
     "gulp": "github:gulpjs/gulp#4.0",
-    "gulp-autoprefixer": "^4.1.0",
-    "gulp-stylus": "^2.7.0"
-  },
-  "optionalDependencies": {},
-  "dependencies": {
+    "gulp-autoprefixer": "^6.0.0",
+    "gulp-stylus": "^2.7.0",
     "gulp-plumber": "^1.2.0"
   }
 }
