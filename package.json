@@ -9,9 +9,14 @@
   "scripts": {},
   "devDependencies": {
     "browser-sync": "^2.24.7",
+    "del": "^3.0.0",
     "gulp": "github:gulpjs/gulp#4.0",
     "gulp-autoprefixer": "^6.0.0",
+    "gulp-plumber": "^1.2.0",
     "gulp-stylus": "^2.7.0",
-    "gulp-plumber": "^1.2.0"
-  }
+    "sharp": "^0.21.0",
+    "through2": "^2.0.3",
+    "vinyl": "^2.2.0"
+  },
+  "dependencies": {}
 }

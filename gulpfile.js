@@ -4,14 +4,16 @@
  * taskhost.exe висячий START в диспетчере задач
  * new_component -n name
  */
-
+let cl = console.log
 // GULP X NODE \\
 const gulp        = require('gulp');                   // 4ая альфа версия
 const browserSync = require('browser-sync').create();  // перезагрузка браузера
 const stylus      = require('gulp-stylus');            // http://stylus-lang.com/try.html#
 const prefix      = require('gulp-autoprefixer');      // добавляет префикси браузеров для css
 const plumber     = require('gulp-plumber');      // добавляет префикси браузеров для css
-
+const t2          = require(`through2`).obj;
+const File        = require(`vinyl`);
+const path        = require(`path`);
 // BASE \\
 {
 
@@ -21,10 +23,11 @@ const plumber     = require('gulp-plumber');      // добавляет преф
         .pipe( browserSync.stream())
     });
     
+    
     gulp.task('styl',()=> { 
         return gulp.src([`./main.styl`]) // берет основной фаил стилей
         .pipe( plumber())
-        .pipe( stylus({'include css': true}))// производить все импорты создавая только один фаил в конце
+        .pipe( stylus({'include css': true,}))// производить все импорты создавая только один фаил в конце
         .pipe( prefix()) // добовляет везде нужные префиксы
         .pipe( gulp.dest(`./public`))
         .pipe( browserSync.stream())
@@ -55,4 +58,5 @@ const plumber     = require('gulp-plumber');      // добавляет преф
     });
 
     gulp.task('default',gulp.parallel('styl','html',"js",'browser-sync','watch'));
+    gulp.task('build'  ,gulp.parallel('styl','html',"js"));
 }
