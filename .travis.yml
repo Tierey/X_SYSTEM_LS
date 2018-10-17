@@ -14,5 +14,4 @@ notifications:
   slack:
     rooms:
       - some-test-more:q5fOEFA9utjq0ASObvyeW53z#general
-      - some-test-more:q5fOEFA9utjq0ASObvyeW53z#random
-					
+      - some-test-more:q5fOEFA9utjq0ASObvyeW53z#random		
