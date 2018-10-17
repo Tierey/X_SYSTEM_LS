@@ -60,6 +60,6 @@ const path        = require(`path`);
     gulp.task('default',gulp.parallel('styl','html',"js",'browser-sync','watch'));
     gulp.task('build'  ,gulp.series(gulp.parallel('styl','html',"js"),function(cb){
     
-        process.exit(666)
+        cb()
     }));
 }
