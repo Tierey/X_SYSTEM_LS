@@ -1,8 +1,7 @@
 'use strict';
-/* ncu [ -a / ncu -p bower ]
+/* ncu [ -a ]
  * npm [ update / i ]
  * taskhost.exe висячий START в диспетчере задач
- * new_component -n name
  */
 
 // GULP X NODE \\
@@ -10,7 +9,7 @@ const gulp        = require('gulp');                   // 4ая альфа ве�
 const browserSync = require('browser-sync').create();  // перезагрузка браузера
 const stylus      = require('gulp-stylus');            // http://stylus-lang.com/try.html#
 const prefix      = require('gulp-autoprefixer');      // добавляет префикси браузеров для css
-const plumber     = require('gulp-plumber');      // добавляет префикси браузеров для css
+const plumber     = require('gulp-plumber');           // отлов ошибок
 
 // BASE \\
 {
@@ -22,10 +21,10 @@ const plumber     = require('gulp-plumber');      // добавляет преф
     });
     
     gulp.task('styl',()=> { 
-        return gulp.src([`./main.styl`]) // берет основной фаил стилей
+        return gulp.src([`./main.styl`])
         .pipe( plumber())
-        .pipe( stylus({'include css': true}))// производить все импорты создавая только один фаил в конце
-        .pipe( prefix()) // добовляет везде нужные префиксы
+        .pipe( stylus({'include css': true})) // производить все импорты создавая только один фаил в конце
+        .pipe( prefix())
         .pipe( gulp.dest(`./public`))
         .pipe( browserSync.stream())
     });
