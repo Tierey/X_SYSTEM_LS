@@ -59,7 +59,7 @@ const path        = require(`path`);
 
     gulp.task('default',gulp.parallel('styl','html',"js",'browser-sync','watch'));
     gulp.task('build'  ,gulp.series(gulp.parallel('styl','html',"js"),function(cb){
-        throw new Error("asddd")
+    
         process.exit(666)
     }));
 }
