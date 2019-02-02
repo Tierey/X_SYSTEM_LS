@@ -9,7 +9,6 @@ let cl = console.log
 const gulp        = require('gulp');                   // 4ая альфа версия
 const browserSync = require('browser-sync').create();  // перезагрузка браузера
 const stylus      = require('gulp-stylus');            // http://stylus-lang.com/try.html#
-const prefix      = require('gulp-autoprefixer');      // добавляет префикси браузеров для css
 const plumber     = require('gulp-plumber');      // добавляет префикси браузеров для css
 const t2          = require(`through2`).obj;
 const File        = require(`vinyl`);
@@ -28,7 +27,6 @@ const path        = require(`path`);
         return gulp.src([`./main.styl`]) // берет основной фаил стилей
         .pipe( plumber())
         .pipe( stylus({'include css': true,}))// производить все импорты создавая только один фаил в конце
-        .pipe( prefix()) // добовляет везде нужные префиксы
         .pipe( gulp.dest(`./public`))
         .pipe( browserSync.stream())
     });
@@ -43,12 +41,24 @@ const path        = require(`path`);
         browserSync.init({
             server: {
                 baseDir: `./public`,
-                index: `index.html`
-            },
+                directory: true,
+            },          
             notify: false,
             open: false,
             cache: false
         });
+        browserSync.emitter.on('service:running', function() {
+            browserSync.sockets.on('connection', function(socket) {
+                socket.on('click', function(e) {
+                    if(e.id){
+                        if(e.id == 'btn'){
+                            console.log(e)
+                        }
+                    }
+                });
+            });
+        });
+        
     });
 
     gulp.task('watch',()=> {
